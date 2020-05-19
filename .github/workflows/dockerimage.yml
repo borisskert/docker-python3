@@ -1,0 +1,60 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '0 4 * * *'
+
+jobs:
+  build-ubuntu-image:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    strategy:
+      matrix:
+        version: [focal, bionic, xenial]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the ubuntu:${{ matrix.version }} Docker image
+        env:
+          DOCKERHUB_ACCESS_TOKEN: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+        run: |
+          cd ubuntu/${{ matrix.version }}
+          docker pull borisskert/python3:${{ matrix.version }}
+          docker build . \
+                       --pull \
+                       --file Dockerfile \
+                       --tag borisskert/python3:${{ matrix.version }} \
+                       --cache-from borisskert/python3:${{ matrix.version }}
+          echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username borisskert --password-stdin
+          docker push borisskert/python3:${{ matrix.version }}
+
+  build-debian-image:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    strategy:
+      matrix:
+        version: [buster, stretch, jessie]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the debian:${{ matrix.version }} Docker image
+        env:
+          DOCKERHUB_ACCESS_TOKEN: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+        run: |
+          cd debian/${{ matrix.version }}
+          docker pull borisskert/python3:${{ matrix.version }}
+          docker build . \
+                       --pull \
+                       --file Dockerfile \
+                       --tag borisskert/python3:${{ matrix.version }} \
+                       --cache-from borisskert/python3:${{ matrix.version }}
+          echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username borisskert --password-stdin
+          docker push borisskert/python3:${{ matrix.version }}
