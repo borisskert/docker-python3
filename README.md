@@ -27,3 +27,9 @@ MIT
 ## Author Information
 
 * [borisskert](https://github.com/borisskert)
+
+## Further links
+
+* [borisskert/python3 @ Docker hub](https://hub.docker.com/r/borisskert/python3)
+* [borisskert/python3 @ Github](https://github.com/borisskert/docker-python3)
+* [pycontribs Docker images](https://hub.docker.com/u/pycontribs)
