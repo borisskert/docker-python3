@@ -19,3 +19,11 @@ These images can be used during ansible molecule tests.
 | `buster`      | `ubuntu:buster` | 3.7.3      | Debian 10    |
 | `stretch`     | `ubuntu:stretch` | 3.5.3     | Debian 9     |
 | `jessie`      | `ubuntu:jessie`  | 3.4.2     | Debian 8     |
+
+## License
+
+MIT
+
+## Author Information
+
+* [borisskert](https://github.com/borisskert)
