@@ -8,7 +8,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build-image:
+  build-ubuntu-debian-image:
     runs-on: ubuntu-latest
     continue-on-error: true
 
@@ -70,6 +70,63 @@ jobs:
                        --pull \
                        --file Dockerfile \
                        --tag borisskert/python3:${RELEASE}-snapshot \
+                       --cache-from "type=local,src=/tmp/.buildx-cache" \
+                       --cache-to "type=local,dest=/tmp/.buildx-cache" \
+                       --output "type=image,push=true" \
+                       --platform=${ARCHITECTURE}
+
+  build-centos-image:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    strategy:
+      matrix:
+        include:
+          - distribution: centos
+            release: 8
+            python: 38
+            architecture: linux/amd64,linux/arm64/v8
+          - distribution: centos
+            release: 7
+            python: 36
+            architecture: linux/386,linux/amd64,linux/arm/v7,linux/arm64/v8
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v3.2.0
+        with:
+          buildx-version: latest
+          qemu-version: latest
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ matrix.distribution }}-${{ matrix.release }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build the docker image
+        env:
+          DOCKERHUB_ACCESS_TOKEN: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+          DISTRIBUTION: ${{ matrix.distribution }}
+          RELEASE: ${{ matrix.release }}
+          PYTHON: ${{ matrix.python }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          cd ${DISTRIBUTION}
+          echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username borisskert --password-stdin
+          docker buildx build . \
+                       --pull \
+                       --file Dockerfile \
+                       --build-arg CENTOS_RELEASE=${RELEASE} \
+                       --build-arg PYTHON_VERSION=${PYTHON} \
+                       --build-arg ARCHITECTURE=${ARCHITECTURE} \
+                       --tag borisskert/python3:${DISTRIBUTION}${RELEASE}-snapshot \
                        --cache-from "type=local,src=/tmp/.buildx-cache" \
                        --cache-to "type=local,dest=/tmp/.buildx-cache" \
                        --output "type=image,push=true" \

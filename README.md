@@ -6,19 +6,19 @@ These images can be used during ansible molecule tests.
 
 * python3
 * python3-pip (upgraded to latest version)
-* python3-dev (and all dependencies)
-* sudo
 
 ## Version overview
 
 | Image version | Base image | Python3 version | OS version | CPU architecture |
 |---------------|------------|-----------------|------------|------------------|
-| `focal`       | `ubuntu:focal` | 3.8.2       | Ubuntu 20.04 | amd64, arm/v7 arm64 |
-| `bionic`      | `ubuntu:bionic` | 3.6.9      | Ubuntu 18.04 | 386, amd64, arm/v7, arm64 |
-| `xenial`      | `ubuntu:xenial` | 3.5.2      | Ubuntu 16.04 | 386, amd64, arm/v7, arm64 |
-| `buster`      | `ubuntu:buster` | 3.7.3      | Debian 10    | 386, amd64, arm/v7, arm64 |
-| `stretch`     | `ubuntu:stretch` | 3.5.3     | Debian 9     | 386, amd64, arm/v7, arm64 |
+| `focal`       | `ubuntu:focal` | 3.8.2       | Ubuntu 20.04 | amd64, arm/v7, arm64/v8 |
+| `bionic`      | `ubuntu:bionic` | 3.6.9      | Ubuntu 18.04 | 386, amd64, arm/v7, arm64/v8 |
+| `xenial`      | `ubuntu:xenial` | 3.5.2      | Ubuntu 16.04 | 386, amd64, arm/v7, arm64/v8 |
+| `buster`      | `ubuntu:buster` | 3.7.3      | Debian 10    | 386, amd64, arm/v7, arm64/v8 |
+| `stretch`     | `ubuntu:stretch` | 3.5.3     | Debian 9     | 386, amd64, arm/v7, arm64/v8 |
 | `jessie`      | `ubuntu:jessie`  | 3.4.2     | Debian 8     | 386, amd64, arm/v7 |
+| `centos8`     | `centos:8`       | 3.8.0     | CentOS 8     | amd64, arm64/v8 |
+| `centos7`     | `centos:7`       | 3.6.8     | CentOS 7     | 386, amd64, arm/v7, arm64/v8 |
 
 ## License
 
