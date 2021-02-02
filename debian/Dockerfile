@@ -1,4 +1,6 @@
-FROM debian:buster
+ARG RELEASE=latest
+
+FROM debian:${RELEASE}
 
 MAINTAINER borisskert <boris.skert@gmail.com>
 

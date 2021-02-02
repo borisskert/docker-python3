@@ -11,7 +11,7 @@ These images can be used during ansible molecule tests.
 
 | Image version | Base image | Python3 version | OS version | CPU architecture |
 |---------------|------------|-----------------|------------|------------------|
-| `focal`       | `ubuntu:focal` | 3.8.2       | Ubuntu 20.04 | amd64, arm/v7, arm64/v8 |
+| `focal`       | `ubuntu:focal` | 3.8.5       | Ubuntu 20.04 | amd64, arm/v7, arm64/v8 |
 | `bionic`      | `ubuntu:bionic` | 3.6.9      | Ubuntu 18.04 | 386, amd64, arm/v7, arm64/v8 |
 | `xenial`      | `ubuntu:xenial` | 3.5.2      | Ubuntu 16.04 | 386, amd64, arm/v7, arm64/v8 |
 | `buster`      | `ubuntu:buster` | 3.7.3      | Debian 10    | 386, amd64, arm/v7, arm64/v8 |

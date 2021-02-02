@@ -10,7 +10,6 @@ on:
 jobs:
   build-ubuntu-debian-image:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     strategy:
       matrix:
@@ -97,8 +96,10 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ${{ matrix.distribution }}/${{ matrix.release }}
+          context: ${{ matrix.distribution }}
           platforms: ${{ matrix.platforms }}
+          build-args: |
+            RELEASE=${{ matrix.release }}
           push: true
           tags: borisskert/python3:${{ matrix.release }}-snapshot
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -106,7 +107,6 @@ jobs:
 
   build-centos-image:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     strategy:
       matrix:
@@ -170,7 +170,6 @@ jobs:
 
   build-openwrt-image:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     strategy:
       matrix:

@@ -1,4 +1,6 @@
-FROM debian:jessie
+ARG RELEASE=latest
+
+FROM ubuntu:${RELEASE}
 
 MAINTAINER borisskert <boris.skert@gmail.com>
 
