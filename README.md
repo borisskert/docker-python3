@@ -19,6 +19,7 @@ These images can be used during ansible molecule tests.
 | `jessie`      | `ubuntu:jessie`  | 3.4.2     | Debian 8     | 386, amd64, arm/v7 |
 | `centos8`     | `centos:8`       | 3.8.0     | CentOS 8     | amd64, arm64/v8 |
 | `centos7`     | `centos:7`       | 3.6.8     | CentOS 7     | 386, amd64, arm/v7, arm64/v8 |
+| `openwrt`     | `openwrtorg/rootfs:19.07.6` | 3.7.9 | OpenWRT | amd64 |
 
 ## License
 
