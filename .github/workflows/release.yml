@@ -104,7 +104,6 @@ jobs:
 
   build-centos-image:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     strategy:
       matrix:
@@ -168,7 +167,6 @@ jobs:
 
   build-openwrt-image:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     strategy:
       matrix:
