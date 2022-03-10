@@ -3,6 +3,7 @@ name: Docker Image CI (nightly)
 on:
   schedule:
     - cron: '0 4 * * *'
+  workflow_dispatch:
 
 jobs:
   build-ubuntu-debian-image:
