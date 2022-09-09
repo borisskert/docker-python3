@@ -17,8 +17,6 @@ These images can be used during ansible molecule tests.
 | `buster`      | `ubuntu:buster` | 3.7.3      | Debian 10    | 386, amd64, arm/v7, arm64/v8 |
 | `stretch`     | `ubuntu:stretch` | 3.5.3     | Debian 9     | 386, amd64, arm/v7, arm64/v8 |
 | `jessie`      | `ubuntu:jessie`  | 3.4.2     | Debian 8     | 386, amd64, arm/v7 |
-| `centos8`     | `centos:8`       | 3.8.0     | CentOS 8     | amd64, arm64/v8 |
-| `centos7`     | `centos:7`       | 3.6.8     | CentOS 7     | 386, amd64, arm/v7, arm64/v8 |
 | `openwrt`     | `openwrtorg/rootfs:19.07.6` | 3.7.9 | OpenWRT | amd64 |
 
 ## License
