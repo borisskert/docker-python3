@@ -53,26 +53,6 @@ jobs:
               linux/amd64
               linux/arm/v7
               linux/arm64/v8
-          - distribution: debian
-            release: stretch
-            platforms: |
-              linux/386
-              linux/amd64
-              linux/arm/v7
-              linux/arm64/v8
-          - distribution: debian
-            release: buster
-            platforms: |
-              linux/386
-              linux/amd64
-              linux/arm/v7
-              linux/arm64/v8
-          - distribution: debian
-            release: jessie
-            platforms: |
-              linux/386
-              linux/amd64
-              linux/arm/v7
 
     steps:
       - uses: actions/checkout@v2
