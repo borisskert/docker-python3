@@ -7,7 +7,9 @@ MAINTAINER borisskert <boris.skert@gmail.com>
 ENV DEBIAN_FRONTEND	noninteractive
 
 RUN apt-get update && \
-    apt-get install -y python3 \
+    apt-get install -y \
+                       pkg-config \
+                       python3 \
                        python3-pip \
                        python3-dev \
                        sudo && \
