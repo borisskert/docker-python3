@@ -1,6 +1,6 @@
 ARG RELEASE=latest
 
-FROM debian:bullseye
+FROM debian:${RELEASE}
 
 MAINTAINER borisskert <boris.skert@gmail.com>
 
