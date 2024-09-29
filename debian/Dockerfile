@@ -2,9 +2,9 @@ ARG RELEASE=latest
 
 FROM debian:${RELEASE}
 
-MAINTAINER borisskert <boris.skert@gmail.com>
+LABEL maintainer="borisskert <boris.skert@gmail.com>"
 
-ENV DEBIAN_FRONTEND	noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y \
@@ -15,7 +15,6 @@ RUN apt-get update && \
                        sudo && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    rm -f /usr/lib/python3.11/EXTERNALLY-MANAGED && \
-    python3 -m pip install --upgrade pip
+    rm -f /usr/lib/python3.11/EXTERNALLY-MANAGED
 
-ENV SHELL /bin/bash
+ENV SHELL=/bin/bash
