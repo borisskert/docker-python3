@@ -2,9 +2,9 @@ ARG RELEASE=latest
 
 FROM ubuntu:${RELEASE}
 
-MAINTAINER borisskert <boris.skert@gmail.com>
+LABEL maintainer="borisskert <boris.skert@gmail.com>"
 
-ENV DEBIAN_FRONTEND	noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y \
@@ -14,7 +14,6 @@ RUN apt-get update && \
                        python3-dev \
                        sudo && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    pip3 install --upgrade pip
+    rm -rf /var/lib/apt/lists/*
 
-ENV SHELL /bin/bash
+ENV SHELL=/bin/bash
